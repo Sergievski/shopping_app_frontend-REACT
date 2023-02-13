@@ -14,8 +14,9 @@ function App() {
 
     //////////////PRODUCTS ///////////////////////////
 
-  let {authTokens} = useContext(AuthContext)
-    
+  
+  // const {authTokens} = useContext(AuthContext);
+  
 
     const [products, setProducts] = useState([])
     const [searchTerm, setSearchTerm] = useState('');
@@ -70,43 +71,45 @@ function App() {
   }, [cartitems]);
 
 
-    // useEffect(() => {
-  
-    //   const getCartItems = () => {
-      
-    //     fetch('http://localhost:8000/cart-items/')
-    //     .then((response) => response.json())
-    //     .then((data) => setCartItems(data))  
-    //   }
-    //     getCartItems()
-    //     },[] )
+
+
+  useEffect(() => {
+
+    const getCartItems = () => {
+    
+      fetch('http://localhost:8000/cart-items/')
+      .then((response) => response.json())
+      .then((data) => setCartItems(data))  
+    }
+      getCartItems()
+      },[] )
 
 
     
 
 
-    useEffect(() => {
+    // useEffect(() => {
       
-      getCartItems()
+    //   getCartItems()
 
-    }, [])
+    // }, [])
 
 
-    let getCartItems = async() => {
-      if (authTokens) {
-        let response = await fetch('http://localhost:8000/cart-items/',{
-          method:'GET',
-          headers:{
-            // 'Content-Type' : 'application/json', 
-            'Authorization' : 'Bearer ' + authTokens.access
-          }
-        })
-        let data = await response.json()
-        setCartItems(data)
-      } else {
-        console.error("authTokens not found")
-      }
-    }
+    // let getCartItems = async() => {
+    //   if (authTokens) {
+    //     let response = await fetch('http://localhost:8000/cart-items/',{
+    //       method:'GET',
+    //       headers:{
+    //         'Content-Type' : 'application/json', 
+    //         'Authorization' : 'Bearer ' + authTokens.access
+    //       }
+    //     })
+    //     let data = await response.json()
+    //     setCartItems(data)
+    //   } else {
+    //     console.error("authTokens not found")
+    //   }
+    // }
 
 
 

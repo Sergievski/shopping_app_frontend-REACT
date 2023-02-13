@@ -35,7 +35,7 @@ export const AuthProvider = ({children}) => {
             setAuthTokens(data)
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
-            history.push('/')
+            history('/')
         } else{
             alert('Something went wrong')
         }
@@ -46,7 +46,7 @@ export const AuthProvider = ({children}) => {
         setAuthTokens(null)
         setUser(null)
         localStorage.removeItem('authTokens')
-        history.push('/login')
+        history('/login')
     }
 
 
