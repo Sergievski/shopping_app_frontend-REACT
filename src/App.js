@@ -26,6 +26,7 @@ function App() {
     const handleSearch = (searchTerm) => {
       setSearchTerm(searchTerm);
     }
+    
   // show searched/all products  
   useEffect(() => { 
     const getProducts = () => {
