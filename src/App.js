@@ -22,23 +22,23 @@ function App() {
     const [searchTerm, setSearchTerm] = useState('');
     const [showAddProduct, setShowAddProduct] = useState(false);
     
+
     const handleSearch = (searchTerm) => {
       setSearchTerm(searchTerm);
     }
+  // show searched/all products  
+  useEffect(() => { 
+    const getProducts = () => {
+      fetch(`http://localhost:8000/products/?query=${searchTerm}`)
+        .then((response) => response.json())
+        .then((data) => setProducts(data))
+        console.log(products)
+    }
+    getProducts()
+  }, [searchTerm])
 
-    useEffect(() => {
-      const getProducts = () => {
-        fetch('http://localhost:8000/products/')
-          .then((response) => response.json())
-          .then((data) => setProducts(data.filter((product) => {
-            return product.name.toLowerCase().includes(searchTerm.toLowerCase());
-          })))
-      }
-      getProducts()
-    }, [searchTerm])
-   
 
-  ////// Create Product
+  ////// Create a new Product
   const addProduct = async (product) => {
   
     const formData = new FormData();
@@ -58,21 +58,19 @@ function App() {
     setProducts([...products, data])
 }
 
-///////////////////CART-ITEMS////////////////////////////
+///////////////////CART-ITEMS/////////////////////CART-ITEMS//////////////////CART-ITEMS///////////////////////////
 
   const [cartitems, setCartItems] = useState([])
-
   const [totalPrice, setTotalPrice] = useState(0)
 
 
-  useEffect(() => {
+   // counting carts total price 
+  useEffect(() => { 
     const total = cartitems.reduce((acc, item) => acc + (Number(item.product.price) * item.quantity), 0);
     setTotalPrice(total);
   }, [cartitems]);
 
-
-
-
+  // show cart items
   useEffect(() => {
 
     const getCartItems = () => {
@@ -84,9 +82,9 @@ function App() {
       getCartItems()
       },[] )
 
-
     
-
+    // THIS PART IS COMMENTED, CAUSE I DIDNT FIND (YET) WHY "authTokens" FAIL TO PASS PROPERLY TO DJANGO ,
+    //LATER , IT WILL ALLOW ME TO SHOW FOE EVERY USER HIS OWN CART 
 
     // useEffect(() => {
       
@@ -111,11 +109,9 @@ function App() {
     //   }
     // }
 
-
-
-
-
     
+
+      // add product to cart 
       const addToCart = async (productId, quantity) => {  
         try {
             const response = await fetch(`http://localhost:8000/cart-items/`, {
@@ -134,7 +130,8 @@ function App() {
         }
             }
       
-            
+       
+      // update cart quantity         
       const updateQuantity = async (pk, quantity) => { 
         
         try {
@@ -159,7 +156,7 @@ function App() {
             }
           }
 
-
+      // remove/delete item from cart
       const removeItem = async (pk) => {
         await fetch(`http://localhost:8000/cart-items/${pk} `, {
         method: 'DELETE'
