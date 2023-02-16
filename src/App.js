@@ -30,7 +30,7 @@ function App() {
   // show searched/all products  
   useEffect(() => { 
     const getProducts = () => {
-      fetch(`http://localhost:8000/products/?query=${searchTerm}`)
+      fetch(`https://shopping-backend-django.herokuapp.com/products/?query=${searchTerm}`)
         .then((response) => response.json())
         .then((data) => setProducts(data))
         console.log(products)
