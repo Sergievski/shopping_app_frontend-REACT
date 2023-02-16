@@ -10,7 +10,7 @@ const CartItem = ({cartitem, onRemove, onUpdate}) => {
   return (
     
             <Card key={cartitem.id} style={{ width: '18rem', backgroundColor:"lightgray"}} >
-        <Card.Img variant="top" src={"http://localhost:8000/"+cartitem.product.image} />
+        <Card.Img variant="top" src={"https://shopping-backend-django.herokuapp.com/"+cartitem.product.image} />
         <Card.Body>
           <Card.Title> {cartitem.product.name} </Card.Title>
           <Card.Text>

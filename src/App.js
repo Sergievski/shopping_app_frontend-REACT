@@ -50,7 +50,7 @@ function App() {
       formData.append('image', product.image);
     
 
-    const res = await fetch('http://localhost:8000/products/', {
+    const res = await fetch('https://shopping-backend-django.herokuapp.com/products/', {
       method: 'POST',
       body: formData
   })
@@ -76,7 +76,7 @@ function App() {
 
     const getCartItems = () => {
     
-      fetch('http://localhost:8000/cart-items/')
+      fetch('shopping-backend-django.herokuapp.com/cart-items/')
       .then((response) => response.json())
       .then((data) => setCartItems(data))  
     }
@@ -115,7 +115,7 @@ function App() {
       // add product to cart 
       const addToCart = async (productId, quantity) => {  
         try {
-            const response = await fetch(`http://localhost:8000/cart-items/`, {
+            const response = await fetch(`shopping-backend-django.herokuapp.com/cart-items/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({'productId': productId, 'quantity': quantity}),
@@ -136,7 +136,7 @@ function App() {
       const updateQuantity = async (pk, quantity) => { 
         
         try {
-            const response = await fetch(`http://localhost:8000/cart-items/${pk}`, {
+            const response = await fetch(`shopping-backend-django.herokuapp.com/cart-items/${pk}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({quantity}),
@@ -147,7 +147,7 @@ function App() {
           }
     
           // get the updated cart items
-          const updatedCart = await fetch(`http://localhost:8000/cart-items/`)
+          const updatedCart = await fetch(`shopping-backend-django.herokuapp.com/cart-items/`)
             .then((response) => response.json())
             .then((data) => data);
  
@@ -159,7 +159,7 @@ function App() {
 
       // remove/delete item from cart
       const removeItem = async (pk) => {
-        await fetch(`http://localhost:8000/cart-items/${pk} `, {
+        await fetch(`shopping-backend-django.herokuapp.com/cart-items/${pk} `, {
         method: 'DELETE'
         })
       
