@@ -12,7 +12,7 @@ const Product = ({product, onAdd}) => {
     
     
     <Card key={product.id} style={{ width: '18rem', backgroundColor:"aliceblue" }}>
-    <Card.Img variant="top" src={"https://shopping-backend-django.herokuapp.com/"+product.image} />
+    <Card.Img variant="top" src={"https://shopping-backend-django.herokuapp.com"+product.image} />
     <Card.Body>
       <Card.Title> {product.name}  </Card.Title>
       <Card.Text>
