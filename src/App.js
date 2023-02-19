@@ -15,7 +15,7 @@ function App() {
     //////////////PRODUCTS ///////////////////////////
 
   
-  // const {authTokens} = useContext(AuthContext);
+  // const {authTokens} = useContext(AuthContext)
   
 
     const [products, setProducts] = useState([])
@@ -33,7 +33,6 @@ function App() {
       fetch(`https://shopping-backend-django.herokuapp.com/products/?query=${searchTerm}`)
         .then((response) => response.json())
         .then((data) => setProducts(data))
-        console.log(products)
     }
     getProducts()
   }, [searchTerm])
