@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
 
     let loginUser = async (e )=> {
         e.preventDefault()
-        let response = await fetch('https://shopping-frontend-react.herokuapp.com/api/token/', {
+        let response = await fetch('https://shopping-backend-django.herokuapp.com/api/token/', {
             method:'POST',
             headers:{
                 'Content-Type':'application/json'
