@@ -1,4 +1,5 @@
 React Frontend Project
+
 This project is a frontend application built with React and Bootstrap, that communicates with a Django backend. It provides a shopping interface where users can view products, add products to their cart, and manage their cart items.
 
 Getting Started
