@@ -45,11 +45,6 @@ The application uses the React Context API to manage authentication. The AuthCon
 API
 The application communicates with a Django backend API. The API provides endpoints for retrieving and adding products, retrieving and adding cart items, and user authentication.
 
-Acknowledgments : 
-
-OpenAI
-React Documentation
-Bootstrap
 
 
 
